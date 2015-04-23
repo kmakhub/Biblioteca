@@ -86,4 +86,15 @@ public class BibliotecaAppTest {
         assertEquals("Thank you! Goodbye!", outputStream.toString());
 
     }
+
+    @Test
+    public void shouldBeAbleToCheckoutBooks() {
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+
+        bibliotecaApp.checkoutBook("Book 1");
+        assertEquals("Thank you! Enjoy the book", outputStream.toString());
+        assertEquals("That book is not available.", outputStream.toString());
+
+    }
 }

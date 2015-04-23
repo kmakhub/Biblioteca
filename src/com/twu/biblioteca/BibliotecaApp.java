@@ -7,6 +7,7 @@ public class BibliotecaApp {
 
     private final String message = "Welcome to Biblioteca Application";
     private final static ArrayList<Book> bookList = new ArrayList<Book>();
+    private final static ArrayList<Book> checkedoutBooks = new ArrayList<Book>();
     private final String[] options = {"List Books", "Checkout Book", "Return Book"};
 
 
@@ -60,5 +61,21 @@ public class BibliotecaApp {
 
     public void quitApplication() {
         System.exit(1);
+    }
+
+    public void checkoutBook(String bookTitle) {
+
+        for(Book book: bookList){
+            if(book.getTitle().equals(bookTitle)){
+                checkedoutBooks.add(book);
+                bookList.remove(book);
+                System.out.println("Thank you! Enjoy the book");
+                break;
+
+            }
+
+        }
+        System.out.println("That book is not available.");
+
     }
 }
