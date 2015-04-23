@@ -79,13 +79,13 @@ public class BibliotecaAppTest {
         assertFalse(bibliotecaApp.checkoutBook("Book 1"));
     }
 
-//    @Test
-//    public void shouldBeAbleToCheckoutMovies() {
-//        bibliotecaApp.initAvailableMovies();
-//        assertTrue(bibliotecaApp.checkoutMovie("Book 1"));
-//        assertFalse(bibliotecaApp.checkoutMovie("Book 4"));
-//        assertFalse(bibliotecaApp.checkoutMovie("Book 1"));
-//    }
+    @Test
+    public void shouldBeAbleToCheckoutMovies() {
+        bibliotecaApp.initAvailableMovies();
+        assertTrue(bibliotecaApp.checkoutMovie("Movie 1"));
+        assertFalse(bibliotecaApp.checkoutMovie("Movie 4"));
+        assertFalse(bibliotecaApp.checkoutMovie("Movie 1"));
+    }
 
 
 }

@@ -9,6 +9,7 @@ public class BibliotecaApp {
     private final  ArrayList<Book> bookList = new ArrayList<Book>();
     private final  ArrayList<Movie> movieList = new ArrayList<Movie>();
     private final  ArrayList<Book> checkedoutBooks = new ArrayList<Book>();
+    private final ArrayList<Movie> checkedoutMovies = new ArrayList<Movie>();
 
     public void initAvailableBooks(){
         bookList.add(new Book("Book 1", "Author 1", "Pub Date 1"));
@@ -70,5 +71,18 @@ public class BibliotecaApp {
             System.out.println(movie.toString());
         }
 
+    }
+
+    public boolean checkoutMovie(String movieTitle) {
+        Iterator<Movie> iterator = movieList.iterator();
+        while (iterator.hasNext()) {
+            Movie movie = iterator.next();
+            if (movie.getName().equals(movieTitle)) {
+                checkedoutMovies.add(movie);
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
     }
 }
