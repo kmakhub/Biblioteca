@@ -98,4 +98,31 @@ public class BibliotecaApp {
     public void successfulReturnBook() {
         System.out.println("Thank you for returning the book.");
     }
+
+    public void respondToUserInput(int option) {
+        switch (option){
+            case 1: libraryBookList(); break;
+            case 2: printCheckoutBook(); break;
+            case 3: printReturnBook(); break;
+            case 0: quitApplication(); break;
+            default:
+                System.out.println("Select a valid option!");
+        }
+    }
+    private void printReturnBook() {
+
+        System.out.print("Please enter book to return:");
+        Scanner scanner = new Scanner(System.in);
+        String option = scanner.nextLine();
+        returnBook(option);
+    }
+
+    private void printCheckoutBook() {
+        System.out.print("Please enter book to checkout:");
+        Scanner scanner = new Scanner(System.in);
+        String option = scanner.nextLine();
+        checkoutBook(option);
+
+
+    }
 }
