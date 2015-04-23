@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -34,5 +35,28 @@ public class BibliotecaApp {
             iterator++;
         }
         System.out.println("0. Quit");
+    }
+
+    public int getUserInput() {
+        System.out.print("Please enter selection:");
+        Scanner scanner = new Scanner(System.in);
+        int option = 0;
+        try {
+
+            option =  scanner.nextInt();
+            while (option < 0 || option > 3) {
+                System.out.print("Select a valid option:");
+                option = scanner.nextInt();
+            }
+        }
+        catch(Exception ex) {
+
+            System.out.println("Select a valid option:");
+            option = scanner.nextInt();
+        }
+
+
+
+        return option;
     }
 }

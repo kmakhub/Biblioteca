@@ -67,4 +67,14 @@ public class BibliotecaAppTest {
         assertEquals("\nMain Menu\n" + "1. List Books\n" +
                 "0. Quit", outputStream.toString());
     }
+
+    @Test
+    public void shouldCheckForInvalidEntry(){
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.getUserInput();
+        //assertEquals("Select a valid option!", outputStream.toString());
+
+
+    }
 }
