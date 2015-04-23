@@ -51,4 +51,11 @@ public class BibliotecaAppTest {
                 "Book 2 , Author 2 , Pub Date 2\n" +
                 "Book 3 , Author 3 , Pub Date 3\n", outputStream.toString());
     }
+
+    @Test
+    public void testShouldTestIfUserCanSeeBookDetails(){
+
+        Book book = new Book("Awesome c#", "Jonah", "2015");
+        assertEquals("Awesome c#, Jonah, 2015", book.toString());
+    }
 }
