@@ -10,7 +10,7 @@ public class Main {
 
         boolean continueToRun = true;
         while(continueToRun) {
-            bibliotecaApp.printMainMenu();
+            consolePrinter.printMainMenu();
             continueToRun = consolePrinter.respondToUserInput();
         }
     }

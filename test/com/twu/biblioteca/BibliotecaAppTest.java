@@ -52,27 +52,9 @@ public class BibliotecaAppTest {
         assertEquals("Awesome c#, Jonah, 2015", book.toString());
     }
 
-    @Test
-    public void shouldHaveAMenu(){
-
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.printMainMenu();
-        assertEquals("\nMain Menu:\n" +
-                "1. List Books\n" +
-                "2. Checkout Book\n" +
-                "3. Return Book\n" +
-                "0. Quit\n", outputStream.toString());
-    }
-
-    @Test
-    public void shouldCheckForInvalidEntry(){
-
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.getUserInput();
-        //assertEquals("Select a valid option!", outputStream.toString());
 
 
-    }
+
 
     @Test
     public void shouldAllowUserToEnterOptionUntilUserQuits()  {
@@ -82,17 +64,7 @@ public class BibliotecaAppTest {
 
     }
 
-    @Test
-    public void shouldPrintMessageWhenCheckingOutBooks() {
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.initAvailableBooks();
-        bibliotecaApp.checkoutBookWithMessage("Book 1");
-        assertEquals("Thank you! Enjoy the book\n", outputStream.toString());
-
-        bibliotecaApp.checkoutBookWithMessage("Book 1");
-        assertEquals("Thank you! Enjoy the book\nThat book is not available.\n", outputStream.toString());
-    }
 
     @Test
     public void shouldBeAbleToCheckoutBooks() {
@@ -104,18 +76,7 @@ public class BibliotecaAppTest {
         assertFalse(bibliotecaApp.checkoutBook("Book 1"));
     }
 
-    @Test
-    public void shouldBeAbleToReturnBook()  {
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.initAvailableBooks();
-        bibliotecaApp.checkoutBookWithMessage("Book 1");
-        bibliotecaApp.returnBook("Book 1");
-        assertEquals("Thank you! Enjoy the book\nThank you for returning the book.\n", outputStream.toString());
-
-        bibliotecaApp.returnBook("Book 1");
-        assertEquals("Thank you! Enjoy the book\nThank you for returning the book.\nThat is not a valid book to return.\n", outputStream.toString());
-    }
 
 
 }
