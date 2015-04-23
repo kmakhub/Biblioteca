@@ -4,10 +4,14 @@ public class Main {
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.initAvailableBooks();
+
+        ConsolePrinter consolePrinter = new ConsolePrinter(bibliotecaApp);
         bibliotecaApp.printWelcomeMessage();
-        while(true) {
+
+        boolean continueToRun = true;
+        while(continueToRun) {
             bibliotecaApp.printMainMenu();
-            bibliotecaApp.respondToUserInput(bibliotecaApp.getUserInput());
+            continueToRun = consolePrinter.responsdToUserInput();
         }
     }
 }

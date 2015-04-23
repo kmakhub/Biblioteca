@@ -1,17 +1,18 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class BibliotecaApp {
 
     private final String message = "Welcome to Biblioteca Application";
-    private final static ArrayList<Book> bookList = new ArrayList<Book>();
-    private final static ArrayList<Book> checkedoutBooks = new ArrayList<Book>();
+    private final  ArrayList<Book> bookList = new ArrayList<Book>();
+    private final  ArrayList<Book> checkedoutBooks = new ArrayList<Book>();
     private final String[] options = {"List Books", "Checkout Book", "Return Book"};
 
 
-    public static void initAvailableBooks(){
+    public void initAvailableBooks(){
         bookList.add(new Book("Book 1", "Author 1", "Pub Date 1"));
         bookList.add(new Book("Book 2", "Author 2", "Pub Date 2"));
         bookList.add(new Book("Book 3", "Author 3", "Pub Date 3"));
@@ -21,9 +22,8 @@ public class BibliotecaApp {
         System.out.println(message);
     }
 
-    public static void libraryBookList() {
-        for(Book book: bookList){
-
+    public void libraryBookList() {
+        for(Book book: bookList) {
             System.out.println(book.toString());
         }
     }
@@ -43,19 +43,21 @@ public class BibliotecaApp {
         Scanner scanner = new Scanner(System.in);
         int option = 0;
         try {
-
             option =  scanner.nextInt();
             while (option < 0 || option > 3) {
-                System.out.print("Select a valid option:");
-                option = scanner.nextInt();
+                option = getOption(scanner);
             }
-        }
-        catch(Exception ex) {
-
-            System.out.println("Select a valid option:");
-            option = scanner.nextInt();
+        }catch(Exception ex) {
+            option = getOption(scanner);
         }
 
+        return option;
+    }
+
+    private static int getOption(Scanner scanner) {
+        int option;
+        System.out.println("Select a valid option:");
+        option = scanner.nextInt();
         return option;
     }
 
@@ -63,19 +65,13 @@ public class BibliotecaApp {
         System.exit(1);
     }
 
-    public void checkoutBook(String bookTitle) {
+    public void checkoutBookWithMessage(String bookTitle) {
 
-        for(Book book: bookList){
-            if(book.getTitle().equals(bookTitle)){
-                checkedoutBooks.add(book);
-                bookList.remove(book);
-                System.out.println("Thank you! Enjoy the book");
-                break;
+        if (checkoutBook(bookTitle))
+            System.out.println("Thank you! Enjoy the book");
+        else
+            System.out.println("That book is not available.");
 
-            }
-
-        }
-        System.out.println("That book is not available.");
 
     }
 
@@ -85,7 +81,7 @@ public class BibliotecaApp {
                 bookList.add(book);
                 checkedoutBooks.remove(book);
                 successfulReturnBook();
-                break;
+                return;
             }
         }
         unsuccessfulReturnBook();
@@ -99,30 +95,33 @@ public class BibliotecaApp {
         System.out.println("Thank you for returning the book.");
     }
 
-    public void respondToUserInput(int option) {
-        switch (option){
-            case 1: libraryBookList(); break;
-            case 2: printCheckoutBook(); break;
-            case 3: printReturnBook(); break;
-            case 0: quitApplication(); break;
-            default:
-                System.out.println("Select a valid option!");
-        }
-    }
-    private void printReturnBook() {
-
+    public void printReturnBook() {
         System.out.print("Please enter book to return:");
-        Scanner scanner = new Scanner(System.in);
-        String option = scanner.nextLine();
+        String option = getBook();
         returnBook(option);
     }
 
-    private void printCheckoutBook() {
+    public void printCheckoutBook() {
         System.out.print("Please enter book to checkout:");
+        String option = getBook();
+        checkoutBookWithMessage(option);
+    }
+
+    private static String getBook() {
         Scanner scanner = new Scanner(System.in);
-        String option = scanner.nextLine();
-        checkoutBook(option);
+        return scanner.nextLine();
+    }
 
-
+    public boolean checkoutBook(String bookTitle) {
+        Iterator<Book> iterator = bookList.iterator();
+        while (iterator.hasNext()) {
+            Book book = iterator.next();
+            if (book.getTitle().equals(bookTitle)) {
+                checkedoutBooks.add(book);
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
     }
 }
