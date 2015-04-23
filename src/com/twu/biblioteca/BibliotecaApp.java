@@ -78,4 +78,24 @@ public class BibliotecaApp {
         System.out.println("That book is not available.");
 
     }
+
+    public void returnBook(String bookTitle) {
+        for(Book book: checkedoutBooks){
+            if(book.getTitle().equals(bookTitle)){
+                bookList.add(book);
+                checkedoutBooks.remove(book);
+                successfulReturnBook();
+                break;
+            }
+        }
+        unsuccessfulReturnBook();
+    }
+
+    public void unsuccessfulReturnBook() {
+        System.out.println("That is not a valid book to return.");
+    }
+
+    public void successfulReturnBook() {
+        System.out.println("Thank you for returning the book.");
+    }
 }

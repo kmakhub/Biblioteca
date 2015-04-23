@@ -97,4 +97,26 @@ public class BibliotecaAppTest {
         assertEquals("That book is not available.", outputStream.toString());
 
     }
+
+    @Test
+    public void shouldBeAbleToReturnBook()  {
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.returnBook("Book 1");
+        // assertEquals("Thank you for returning the book.", outputStream.toString());
+    }
+    @Test
+    public void shouldGetSuccessfulReportWhenReturningABookThatIsNotThere()  {
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.successfulReturnBook();
+        assertEquals("That is not a valid book to return.", outputStream.toString());
+    }
+    @Test
+    public void shouldGetUnsuccessfulReportWhenReturningABookThatIsNotThere()  {
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.unsuccessfulReturnBook();
+        assertEquals("That is not a valid book to return.", outputStream.toString());
+    }
 }
