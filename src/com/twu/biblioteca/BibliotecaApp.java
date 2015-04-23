@@ -10,6 +10,7 @@ public class BibliotecaApp {
     private final  ArrayList<Movie> movieList = new ArrayList<Movie>();
     private final  ArrayList<Book> checkedoutBooks = new ArrayList<Book>();
     private final ArrayList<Movie> checkedoutMovies = new ArrayList<Movie>();
+    private ArrayList<LibraryUser> userList = new ArrayList<LibraryUser>();
 
     public void initAvailableBooks(){
         bookList.add(new Book("Book 1", "Author 1", "Pub Date 1"));
@@ -21,6 +22,12 @@ public class BibliotecaApp {
         movieList.add(new Movie("Movie 1", 2010, "Director 1", 1));
         movieList.add(new Movie("Movie 2", 2012, "Director 2", 4));
         movieList.add(new Movie("Movie 3", 1990, "Director 3", 8));
+    }
+
+    public void initLibraryUsers() {
+        userList.add(new LibraryUser("xxx-xxxx", "xxxxxx"));
+        userList.add(new LibraryUser("yyy-yyyy", "yyyyyy"));
+        userList.add(new LibraryUser("zzz-zzzz", "zzzzzz"));
     }
 
     public void libraryBookList() {
@@ -65,7 +72,6 @@ public class BibliotecaApp {
         return false;
     }
 
-
     public void libraryMovieList() {
         for(Movie movie: movieList) {
             System.out.println(movie.toString());
@@ -80,6 +86,38 @@ public class BibliotecaApp {
             if (movie.getName().equals(movieTitle)) {
                 checkedoutMovies.add(movie);
                 iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getMovie() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    public String whoCheckedOutBook() {
+        return "xxx-xxxx";
+
+    }
+
+    public static String getUserDetails() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    public boolean loginIn() {
+        System.out.print("Library Numer: ");
+        String libraryNumber = getUserDetails();
+       // System.out.println();
+        System.out.print("Password: ");
+        String password = getUserDetails();
+        return validateUserCreditials(libraryNumber, password);
+    }
+    public boolean validateUserCreditials(String libraryNumber, String password) {
+        for(LibraryUser user: userList){
+            if (user.getLibraryNumber().equals(libraryNumber) && user.getUserPassword().equals(password)) {
                 return true;
             }
         }

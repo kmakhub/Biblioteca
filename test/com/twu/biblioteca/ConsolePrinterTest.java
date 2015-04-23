@@ -55,12 +55,23 @@ public class ConsolePrinterTest {
     public void shouldHaveAMenu(){
 
         consolePrinter.printMainMenu();
-        assertEquals("\nMain Menu:\n" +
+        assertEquals("\n" +
+                "Main Menu:\n" +
                 "1. List Books\n" +
                 "2. List Movies\n" +
                 "3. Checkout Book\n" +
-                "4. Return Book\n" +
+                "4. Checkout Movie\n" +
+                "5. Return Book\n" +
                 "0. Quit\n", outputStream.toString());
+    }
+
+    @Test
+    public void shouldSeeWhoCheckoutABook()  {
+        bibliotecaApp.initLibraryUsers();
+       // bibliotecaApp.loginIn();
+        assertEquals("xxx-xxxx", bibliotecaApp.whoCheckedOutBook());
+       // assertEquals("xxx-xxxy", bibliotecaApp.whoCheckedOutBook());
+
     }
 
     @Test

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ConsolePrinter {
     private BibliotecaApp bibliotecaApp;
     private final String message = "Welcome to Biblioteca Application";
-    private final String[] options = {"List Books", "List Movies", "Checkout Book", "Return Book"};
+    private final String[] options = {"List Books", "List Movies", "Checkout Book", "Checkout Movie","Return Book"};
 
     public ConsolePrinter(BibliotecaApp bibliotecaApp) {
         this.bibliotecaApp = bibliotecaApp;
@@ -21,7 +21,8 @@ public class ConsolePrinter {
             case 1: bibliotecaApp.libraryBookList(); break;
             case 2: bibliotecaApp.libraryMovieList(); break;
             case 3: printCheckoutBook(); break;
-            case 4: printReturnBook(); break;
+            case 4: printCheckoutMovie(); break;
+            case 5: printReturnBook(); break;
             case 0:
                 return false;
             default:
@@ -73,11 +74,24 @@ public class ConsolePrinter {
         checkoutBookWithMessage(option);
     }
 
+    public void printCheckoutMovie() {
+        System.out.print("Please enter book to checkout:");
+        String option = bibliotecaApp.getMovie();
+        checkoutMovieWithMessage(option);
+    }
+
     public void checkoutBookWithMessage(String bookTitle) {
         if (bibliotecaApp.checkoutBook(bookTitle))
             System.out.println("Thank you! Enjoy the book");
         else
             System.out.println("That book is not available.");
+    }
+
+    public void checkoutMovieWithMessage(String bookTitle) {
+        if (bibliotecaApp.checkoutMovie(bookTitle))
+            System.out.println("Thank you! Enjoy the movie");
+        else
+            System.out.println("That movie is not available.");
     }
 
 }
