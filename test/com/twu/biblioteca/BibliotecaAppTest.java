@@ -58,4 +58,13 @@ public class BibliotecaAppTest {
         Book book = new Book("Awesome c#", "Jonah", "2015");
         assertEquals("Awesome c#, Jonah, 2015", book.toString());
     }
+
+    @Test
+    public void shouldHaveAMenu(){
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.printMainMenu();
+        assertEquals("\nMain Menu\n" + "1. List Books\n" +
+                "0. Quit", outputStream.toString());
+    }
 }

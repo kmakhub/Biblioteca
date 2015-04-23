@@ -6,6 +6,7 @@ public class BibliotecaApp {
 
     private final String message = "Welcome to Biblioteca Application";
     private final static ArrayList<Book> bookList = new ArrayList<Book>();
+    private final String[] options = {"List Books", "Checkout Book", "Return Book"};
 
 
     public static void initAvailableBooks(){
@@ -23,5 +24,15 @@ public class BibliotecaApp {
 
             System.out.println(book.toString());
         }
+    }
+
+    public void printMainMenu() {
+        System.out.println("\nMain Menu:");
+        int iterator = 1;
+        for(String option: options){
+            System.out.println(iterator+". "+option);
+            iterator++;
+        }
+        System.out.println("0. Quit");
     }
 }
