@@ -6,12 +6,12 @@ public class Main {
         bibliotecaApp.initAvailableBooks();
 
         ConsolePrinter consolePrinter = new ConsolePrinter(bibliotecaApp);
-        bibliotecaApp.printWelcomeMessage();
+        consolePrinter.printWelcomeMessage();
 
         boolean continueToRun = true;
         while(continueToRun) {
             bibliotecaApp.printMainMenu();
-            continueToRun = consolePrinter.responsdToUserInput();
+            continueToRun = consolePrinter.respondToUserInput();
         }
     }
 }

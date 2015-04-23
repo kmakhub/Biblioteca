@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    private final String message = "Welcome to Biblioteca Application";
+
     private final  ArrayList<Book> bookList = new ArrayList<Book>();
     private final  ArrayList<Book> checkedoutBooks = new ArrayList<Book>();
     private final String[] options = {"List Books", "Checkout Book", "Return Book"};
@@ -18,9 +18,7 @@ public class BibliotecaApp {
         bookList.add(new Book("Book 3", "Author 3", "Pub Date 3"));
     }
 
-    public void printWelcomeMessage() {
-        System.out.println(message);
-    }
+
 
     public void libraryBookList() {
         for(Book book: bookList) {
@@ -59,10 +57,6 @@ public class BibliotecaApp {
         System.out.println("Select a valid option:");
         option = scanner.nextInt();
         return option;
-    }
-
-    public void quitApplication() {
-        System.exit(1);
     }
 
     public void checkoutBookWithMessage(String bookTitle) {

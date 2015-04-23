@@ -32,17 +32,7 @@ public class BibliotecaAppTest {
 
     }
 
-    @Test
-    public void shouldPrintWelcomeMessage(){
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-
-        String message = "Welcome to Biblioteca Application";
-        bibliotecaApp.printWelcomeMessage();
-
-        assertEquals(message + "\n", outputStream.toString());
-
-    }
 
     @Test
     public void shouldShowListOfBooks() {
