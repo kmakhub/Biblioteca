@@ -40,4 +40,15 @@ public class BibliotecaAppTest {
         assertEquals(message + "\n", outputStream.toString());
 
     }
+
+    @Test
+    public void shouldShowListOfBooks() {
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.initAvailableBooks();
+        bibliotecaApp.libraryBookList();
+        assertEquals("Book 1 , Author 1 , Pub Date 1\n" +
+                "Book 2 , Author 2 , Pub Date 2\n" +
+                "Book 3 , Author 3 , Pub Date 3\n", outputStream.toString());
+    }
 }
