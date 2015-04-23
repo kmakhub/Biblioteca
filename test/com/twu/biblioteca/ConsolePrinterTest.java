@@ -57,8 +57,9 @@ public class ConsolePrinterTest {
         consolePrinter.printMainMenu();
         assertEquals("\nMain Menu:\n" +
                 "1. List Books\n" +
-                "2. Checkout Book\n" +
-                "3. Return Book\n" +
+                "2. List Movies\n" +
+                "3. Checkout Book\n" +
+                "4. Return Book\n" +
                 "0. Quit\n", outputStream.toString());
     }
 
@@ -87,4 +88,6 @@ public class ConsolePrinterTest {
         bibliotecaApp.returnBook("Book 1");
         assertEquals("Thank you! Enjoy the book\nThank you for returning the book.\nThat is not a valid book to return.\n", outputStream.toString());
     }
+
+
 }

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ConsolePrinter {
     private BibliotecaApp bibliotecaApp;
     private final String message = "Welcome to Biblioteca Application";
-    private final String[] options = {"List Books", "Checkout Book", "Return Book"};
+    private final String[] options = {"List Books", "List Movies", "Checkout Book", "Return Book"};
 
     public ConsolePrinter(BibliotecaApp bibliotecaApp) {
         this.bibliotecaApp = bibliotecaApp;
@@ -19,8 +19,9 @@ public class ConsolePrinter {
     public boolean respondToUserInput() {
         switch (getUserInput()){
             case 1: bibliotecaApp.libraryBookList(); break;
-            case 2: printCheckoutBook(); break;
-            case 3: printReturnBook(); break;
+            case 2: bibliotecaApp.libraryMovieList(); break;
+            case 3: printCheckoutBook(); break;
+            case 4: printReturnBook(); break;
             case 0:
                 return false;
             default:
@@ -45,13 +46,12 @@ public class ConsolePrinter {
         int option = 0;
         try {
             option =  scanner.nextInt();
-            while (option < 0 || option > 3) {
+            while (option < 0 || option > 4) {
                 option = getOption(scanner);
             }
         }catch(Exception ex) {
             option = getOption(scanner);
         }
-
         return option;
     }
     private static int getOption(Scanner scanner) {

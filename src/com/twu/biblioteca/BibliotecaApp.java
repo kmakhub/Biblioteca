@@ -7,12 +7,19 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     private final  ArrayList<Book> bookList = new ArrayList<Book>();
+    private final  ArrayList<Movie> movieList = new ArrayList<Movie>();
     private final  ArrayList<Book> checkedoutBooks = new ArrayList<Book>();
 
     public void initAvailableBooks(){
         bookList.add(new Book("Book 1", "Author 1", "Pub Date 1"));
         bookList.add(new Book("Book 2", "Author 2", "Pub Date 2"));
         bookList.add(new Book("Book 3", "Author 3", "Pub Date 3"));
+    }
+
+    public void initAvailableMovies() {
+        movieList.add(new Movie("Movie 1", 2010, "Director 1", 1));
+        movieList.add(new Movie("Movie 2", 2012, "Director 2", 4));
+        movieList.add(new Movie("Movie 3", 1990, "Director 3", 8));
     }
 
     public void libraryBookList() {
@@ -55,5 +62,13 @@ public class BibliotecaApp {
             }
         }
         return false;
+    }
+
+
+    public void libraryMovieList() {
+        for(Movie movie: movieList) {
+            System.out.println(movie.toString());
+        }
+
     }
 }
