@@ -77,4 +77,13 @@ public class BibliotecaAppTest {
 
 
     }
+
+    @Test
+    public void shouldAllowUserToEnterOptionUntilUserQuits()  {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.quitApplication();
+        // bibliotecaApp.respondToUserInput(bibliotecaApp.getUserInput());
+        assertEquals("Thank you! Goodbye!", outputStream.toString());
+
+    }
 }

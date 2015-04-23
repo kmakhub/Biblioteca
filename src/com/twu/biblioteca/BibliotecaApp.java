@@ -55,8 +55,10 @@ public class BibliotecaApp {
             option = scanner.nextInt();
         }
 
-
-
         return option;
+    }
+
+    public void quitApplication() {
+        System.exit(1);
     }
 }
